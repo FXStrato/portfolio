@@ -1,0 +1,7 @@
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+height: 100%;
+}
+
+.navbar-fixed {
+  height: 80px;
+}
