@@ -7,11 +7,19 @@ import uiRouter from 'angular-ui-router';
 
 import template from './router.html';
 import { name as Navigation } from '../navigation/navigation';
-import { name as Clubs } from '../clubs/clubs';
+import { name as Contact } from '../contact/contact';
+import { name as Web } from '../web/web';
+import {name as WebDetails} from '../webDetails/webDetails';
 import { name as Landing } from '../landing/landing'; //Example of import
 
 //Logic for controller will go here. To format correctly, follow some example code from tutorial_code folder
-class Router {}
+class Router {
+  constructor($scope, $reactive) {
+    'ngInject';
+
+    $reactive(this).attach($scope);
+  }
+}
 
 const name = 'router';
 
@@ -20,7 +28,9 @@ export default angular.module(name, [
   angularMeteor,
   uiRouter,
   Navigation,
-  Clubs,
+  Contact,
+  Web,
+  WebDetails,
   Landing //Example of adding module to module list
 ]).component(name, {
   template,

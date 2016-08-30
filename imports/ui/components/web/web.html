@@ -1,0 +1,11 @@
+<div class="container">
+  <div> Hi this is the web site design page! </div>
+  <ul>
+    <li ng-repeat="project in web.webproj">
+      <a ui-sref="webDetails({ webId: project.project_id })">
+        {{project.name}}
+      </a>
+      <p>{{project.description}}</p>
+    </li>
+  </ul>
+</div>

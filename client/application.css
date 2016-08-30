@@ -2,6 +2,15 @@ nav .nav-wrapper form, nav .nav-wrapper form .input-field{
 height: 100%;
 }
 
+nav {
+  box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.12);
+}
+
 .navbar-fixed {
   height: 80px;
+}
+
+.btn {
+  background-color: white;
+  font: black;
 }
