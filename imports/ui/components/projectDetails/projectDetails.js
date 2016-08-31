@@ -2,30 +2,28 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './webDetails.html';
-import { WebProjects } from '../../../api/webprojects';
+import template from './projectDetails.html';
+import { Projects } from '../../../api/projects';
 
-class WebDetails {
+class ProjectDetails {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
 
     $reactive(this).attach($scope);
 
-    this.webId = $stateParams.webId;
-
-    $('#nav_web').addClass('active');
+    this.projId = $stateParams.projId;
 
     this.helpers({
       project() {
-        return WebProjects.findOne({
-          id: $stateParams.webId
+        return Projects.findOne({
+          id: $stateParams.projId
         });
       }
     });
   }
 }
 
-const name = 'webDetails';
+const name = 'projectDetails';
 
 // create a module
 export default angular.module(name, [
@@ -34,15 +32,15 @@ export default angular.module(name, [
 ]).component(name, {
   template,
   controllerAs: name,
-  controller: WebDetails
+  controller: ProjectDetails
 })
   .config(config);
 
 function config($stateProvider) {
   'ngInject';
 
-  $stateProvider.state('webDetails', {
-    url: '/web/:webId',
-    template: '<web-details></web-details>'
+  $stateProvider.state('projectDetails', {
+    url: '/project/:projId',
+    template: '<project-details></project-details>'
   });
 }

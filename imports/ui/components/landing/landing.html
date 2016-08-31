@@ -1,15 +1,20 @@
 <div id="landing_page" class="container">
   <div class="row">
-    <div class="col s4 center">
-      <a href=""><i class="material-icons black-text landing-borderline">desktop_windows</i></a>
-    </div>
-    <div class="col s4 center">
-      <a href=""><i class="material-icons black-text landing-borderline">camera</i></a>
-    </div>
-    <div class="col s4 center">
-      <a href=""><i class="material-icons black-text landing-borderline">menu</i><a>
+    <div class="col s8 offset-s2">
+      Introduction will go here. This block of information will precede the hexes, and have the hexes fade in using scrollfire.
     </div>
   </div>
+  <div class="row">
+    <ul id="hexGrid">
+  <li class="hex" ng-repeat="project in landing.projects">
+    <a class="hexIn" ui-sref="projectDetails({ projId: project.project_id })">
+      <img src="https://farm9.staticflickr.com/8461/8048823381_0fbc2d8efb.jpg" alt="" />
+      <h1>{{project.name}}</h1>
+      <p>{{project.description}}</p>
+    </a>
+  </li>
+</ul>
+</div>
 </div>
 
 

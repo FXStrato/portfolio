@@ -4,7 +4,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import { WebProjects } from '../../../api/webprojects';
+import { Projects } from '../../../api/projects';
 import template from './web.html';
 
 class Web {
@@ -17,7 +17,7 @@ class Web {
 
   this.helpers({
     webproj() {
-      return WebProjects.find({});
+      return Projects.find({});
     }
   });
   }

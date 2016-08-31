@@ -12,11 +12,7 @@ class Navigation {
     $reactive(this).attach($scope);
 
     $scope.isActive = function (viewLocation) {
-        if(viewLocation === "/web" && $location.path().indexOf('/web/') !== -1) {
-          return true;
-        } else {
-            return viewLocation === $location.path();
-        }
+        return viewLocation === $location.path();
     };
 
     $(".button-collapse").sideNav({closeOnClick: true});

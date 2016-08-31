@@ -9,7 +9,7 @@ import template from './router.html';
 import { name as Navigation } from '../navigation/navigation';
 import { name as Contact } from '../contact/contact';
 import { name as Web } from '../web/web';
-import {name as WebDetails} from '../webDetails/webDetails';
+import {name as ProjectDetails } from '../projectDetails/projectDetails';
 import { name as Landing } from '../landing/landing'; //Example of import
 
 //Logic for controller will go here. To format correctly, follow some example code from tutorial_code folder
@@ -30,7 +30,7 @@ export default angular.module(name, [
   Navigation,
   Contact,
   Web,
-  WebDetails,
+  ProjectDetails,
   Landing //Example of adding module to module list
 ]).component(name, {
   template,

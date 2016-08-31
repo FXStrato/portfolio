@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+import { Projects } from '../../../api/projects';
 
 import template from './landing.html';
 
@@ -9,6 +10,12 @@ class Landing {
   'ngInject';
 
   $reactive(this).attach($scope);
+
+  this.helpers({
+    projects() {
+      return Projects.find({});
+    }
+  });
   }
 }
 

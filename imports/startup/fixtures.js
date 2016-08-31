@@ -4,7 +4,7 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Parties } from '../api/parties';
-import { WebProjects} from '../api/webprojects';
+import { Projects } from '../api/projects';
 
 Meteor.startup(() => {
   if (Parties.find().count() === 0) {
@@ -24,10 +24,10 @@ Meteor.startup(() => {
     });
   }
   // if (WebProjects.find().count() === 0) {
-    const projects = [{
+    const projs = [{
       'project_id': 'info_463',
       'name': 'INFO 463 Final Design',
-      'description': 'Worked with in a team of 4 to design a smartwatch interface'
+      'description': 'Worked in a team of four to design a smartwatch interface'
     }, {
       'project_id': 'att_internship_2015',
       'name': 'AT&T Internship 2015',
@@ -37,9 +37,9 @@ Meteor.startup(() => {
       'name': 'AT&T Intern Coding Challenge 2016',
       'description': "Redesigned the Heroes On The Water organization's website"
     }];
-    WebProjects.remove({});
-    projects.forEach((project) => {
-      WebProjects.insert(project)
+    Projects.remove({});
+    projs.forEach((project) => {
+      Projects.insert(project)
     });
   // }
 
