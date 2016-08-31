@@ -14,3 +14,28 @@ nav {
   background-color: white;
   font: black;
 }
+
+.landing-borderline {
+  font-size: 10em;
+  padding: 15px;
+  -webkit-transition: background 0.3s linear;
+  -moz-transition: background 0.3s linear;
+  -ms-transition: background 0.3s linear;
+  -o-transition: background 0.3s linear;
+  transition: background 0.3s linear;
+}
+.landing-borderline:hover {
+  background-color: #eceff1;
+}
+
+@media only screen and (max-width : 992px) {
+  .landing-borderline {
+    font-size: 9em;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  .landing-borderline {
+    font-size: 8em;
+  }
+}
