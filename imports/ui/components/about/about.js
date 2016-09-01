@@ -1,26 +1,22 @@
+//Page for clubs
+
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import { Projects } from '../../../api/projects';
 
-import template from './landing.html';
+import template from './about.html';
 
-class Landing {
+class About {
   constructor($scope, $reactive) {
-    'ngInject';
+  'ngInject';
 
-    $reactive(this).attach($scope);
+  $reactive(this).attach($scope);
 
-
-    this.helpers({
-      projects() {
-        return Projects.find({});
-      }
-    });
+  $('#nav_about').addClass('active');
   }
 }
 
-const name = 'landing';
+const name = 'about';
 
 // create a module
 export default angular.module(name, [
@@ -29,7 +25,7 @@ export default angular.module(name, [
 ]).component(name, {
   template,
   controllerAs: name,
-  controller: Landing
+  controller: About
 })
   .config(config);
 
@@ -37,8 +33,8 @@ function config($stateProvider) {
   'ngInject';
 
   $stateProvider
-    .state('home', {
-      url: '/',
-      template: '<landing></landing>'
+    .state('about', {
+      url: '/about',
+      template: '<about></about>'
     });
 }

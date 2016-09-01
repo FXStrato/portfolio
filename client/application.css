@@ -15,6 +15,41 @@ nav {
   font: black;
 }
 
+.hline {
+  display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(#fff));
+}
+
+/*Delay animations for each project on landing page*/
+#wga_2016 {
+  -webkit-animation-delay: 0s;
+  -ms-animation-delay: 0s;
+}
+#att_icc_2016 {
+  -webkit-animation-delay: 0.25s;
+  -ms-animation-delay: 0.25s;
+}
+#info_463 {
+  -webkit-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+}
+#att_internship_2015 {
+  -webkit-animation-delay: 0.75s;
+  -ms-animation-delay: 0.75s;
+}
+#att_icc_2015 {
+  -webkit-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+}
+#dubhacks_2015 {
+  -webkit-animation-delay: 1.25s;
+  -ms-animation-delay: 1.25s;
+}
+
 * {
     margin: 0;
     padding: 0;

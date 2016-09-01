@@ -23,24 +23,35 @@ Meteor.startup(() => {
       Parties.insert(party)
     });
   }
-  // if (WebProjects.find().count() === 0) {
+  if (Projects.find().count() === 0) {
     const projs = [{
+      'project_id': 'wga_2016',
+      'name': 'WGA Umbrella Site Design 2016',
+      'description': "Currently working on creating Washington Gaming Association's umbrella site"
+    }, {
+      'project_id': 'att_icc_2016',
+      'name': 'AT&T Intern Coding Challenge 2016',
+      'description': "Team of 4 redesigned the Heroes On The Water organization's website"
+    }, {
       'project_id': 'info_463',
-      'name': 'INFO 463 Final Design',
+      'name': 'INFO 463 Smartwatch Design 2016',
       'description': 'Worked in a team of four to design a smartwatch interface'
     }, {
       'project_id': 'att_internship_2015',
       'name': 'AT&T Internship 2015',
-      'description': 'Redesigned the OTSM dashboard for client'
+      'description': 'Redesigned the OTSM dashboard for client team working with Jasper'
     }, {
-      'project_id': 'att_icc_2016',
-      'name': 'AT&T Intern Coding Challenge 2016',
-      'description': "Redesigned the Heroes On The Water organization's website"
+      'project_id': 'att_icc_2015',
+      'name': 'AT&T Intern Coding Challenge 2015',
+      'description': 'Worked in a team of 6 to create a food buddy app'
+    }, {
+      'project_id': 'dubhacks_2015',
+      'name': 'Dubhacks 2015',
+      'description': 'Team of 2 created an encrypted messaging app built with Socket.io'
     }];
-    Projects.remove({});
     projs.forEach((project) => {
       Projects.insert(project)
     });
-  // }
+  }
 
 });

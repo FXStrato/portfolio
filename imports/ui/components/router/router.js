@@ -8,6 +8,7 @@ import uiRouter from 'angular-ui-router';
 import template from './router.html';
 import { name as Navigation } from '../navigation/navigation';
 import { name as Contact } from '../contact/contact';
+import { name as About } from '../about/about';
 import { name as Web } from '../web/web';
 import {name as ProjectDetails } from '../projectDetails/projectDetails';
 import { name as Landing } from '../landing/landing'; //Example of import
@@ -30,6 +31,7 @@ export default angular.module(name, [
   Navigation,
   Contact,
   Web,
+  About,
   ProjectDetails,
   Landing //Example of adding module to module list
 ]).component(name, {
