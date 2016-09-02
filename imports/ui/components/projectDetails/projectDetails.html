@@ -1,5 +1,56 @@
 <div class="container">
-  <div>This is where the website design project information will be hosted</div>
-  <div>Current id of project: {{projectDetails.projId}}</div>
-  <a href="/" class="btn waves-effect white black-text">Back</a>
+  <div class="row">
+    <div class="col s12 center">
+      <h2 id="projectDetails-title" style="font-family: Raleway"> {{ projectDetails.project.name | uppercase }} </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 center">
+      <img class="responsive-img" src="/images/{{projectDetails.projId}}/macbook_{{projectDetails.projId}}.png"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 center">
+      <br>
+      <p class="flow-text" style="font-family: Roboto; font-weight: 300"> {{projectDetails.project.long_description}}
+      </p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col s12 flow-text">
+      <table>
+        <thead>
+          <tr>
+              <th data-field="Project Role">Project Role</th>
+              <th data-field="Code">Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ projectDetails.project.role }}</td>
+            <td>{{ projectDetails.project.code }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col s12 center" style="font-family: Raleway">
+      <h3 id="additional-images">GALLERY</h3>
+    </div>
+    <div class="col s2 offset-s5">
+      <hr>
+    </div>
+  </div>
+  <div ng-repeat="picture in projectDetails.project.pictures" emit-last-repeater-element ng-if='$index % 2 == 0' class="row">
+    <div class="col s12 m6 l6">
+        <img class="responsive-img materialboxed" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
+    </div>
+    <div class="col s12 m6 l6" ng-if="!$last">
+        <img class="responsive-img materialboxed" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index+1]}}.png">
+    </div>
+  </div>
 </div>
+  <!-- <button class="btn waves-effect white black-text"><a href="/">Back</a></button> -->

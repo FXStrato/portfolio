@@ -5,3 +5,4 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import { name as Router } from '../imports/ui/components/router/router';
+import { name as lastElementDirective } from '../imports/directives/lastElement';

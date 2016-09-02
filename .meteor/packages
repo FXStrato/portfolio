@@ -20,7 +20,7 @@ autopublish@1.0.7             # Publish all data to the clients (for prototyping
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 pbastowski:angular-babel
 fourseven:scss
-materialize:materialize@=0.97.6
 urigo:static-templates
 underscore@1.0.9
 yasaricli:nanoscroller
+materialize:materialize@=0.97.6

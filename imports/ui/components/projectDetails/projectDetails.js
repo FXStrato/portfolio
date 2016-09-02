@@ -13,10 +13,38 @@ class ProjectDetails {
 
     this.projId = $stateParams.projId;
 
+
+    $scope.$on('LastRepeaterElement', function(){
+      $('.materialboxed').materialbox();
+    });
+
+    this.prev = function() {
+      $('.carousel').carousel('prev');
+      toggleButtons();
+    }
+
+    this.next = function() {
+      $('.carousel').carousel('next');
+      toggleButtons();
+    }
+
+    function toggleButtons() {
+      $('#icon_prev').addClass('disabled');
+      $('#icon_prev').prop('disabled', true);
+      $('#icon_next').addClass('disabled');
+      $('#icon_next').prop('disabled', true);
+      setTimeout(function() {
+        $('#icon_prev').removeClass('disabled');
+        $('#icon_prev').prop('disabled', false);
+        $('#icon_next').removeClass('disabled');
+        $('#icon_next').prop('disabled', false);
+      }, 1300);
+    }
+
     this.helpers({
       project() {
         return Projects.findOne({
-          id: $stateParams.projId
+          project_id: $stateParams.projId
         });
       }
     });
@@ -24,6 +52,7 @@ class ProjectDetails {
 }
 
 const name = 'projectDetails';
+
 
 // create a module
 export default angular.module(name, [
