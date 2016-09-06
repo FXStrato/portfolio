@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container animated fadeIn">
   <div class="row">
     <div class="col s12 center">
       <h2 id="projectDetails-title" style="font-family: Raleway"> {{ projectDetails.project.name | uppercase }} </h2>
     </div>
   </div>
-  <div class="row">
+  <div id="macbook-row" class="row">
     <div class="col s12 center">
       <img class="responsive-img" src="/images/{{projectDetails.projId}}/macbook_{{projectDetails.projId}}.png"/>
     </div>
@@ -14,6 +14,12 @@
       <br>
       <p class="flow-text" style="font-family: Roboto; font-weight: 300"> {{projectDetails.project.long_description}}
       </p>
+    </div>
+  </div>
+  <br>
+  <div class="row" ng-show="projectDetails.project.github">
+    <div class="col s12 center">
+      <a class="btn-large blue-grey white-text waves-effect" style="width: 100%" target="_blank" href="{{projectDetails.project.github}}">Github Repo</a>
     </div>
   </div>
   <br>
@@ -36,7 +42,7 @@
     </div>
   </div>
   <br>
-  <div class="row">
+  <div class="row" ng-show="projectDetails.project.pictures">
     <div class="col s12 center" style="font-family: Raleway">
       <h3 id="additional-images">GALLERY</h3>
     </div>
@@ -46,10 +52,10 @@
   </div>
   <div ng-repeat="picture in projectDetails.project.pictures" emit-last-repeater-element ng-if='$index % 2 == 0' class="row">
     <div class="col s12 m6 l6">
-        <img class="responsive-img materialboxed" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
+        <img class="responsive-img materialboxed" data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index] : ''}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
     </div>
-    <div class="col s12 m6 l6" ng-if="!$last">
-        <img class="responsive-img materialboxed" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index+1]}}.png">
+    <div class="col s12 m6 l6" ng-if="projectDetails.project.pictures.length > ($index + 1)">
+        <img class="responsive-img materialboxed" data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index+1] : ''}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index+1]}}.png">
     </div>
   </div>
 </div>

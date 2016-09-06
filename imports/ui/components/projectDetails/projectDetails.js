@@ -6,46 +6,39 @@ import template from './projectDetails.html';
 import { Projects } from '../../../api/projects';
 
 class ProjectDetails {
-  constructor($stateParams, $scope, $reactive) {
+  constructor($stateParams, $scope, $reactive, $anchorScroll) {
     'ngInject';
 
     $reactive(this).attach($scope);
 
+    $anchorScroll(); // Start at top of page to allow for offset scrollfire to occur
+
+
+
     this.projId = $stateParams.projId;
+
+    var options = [
+    {selector: '#macbook-row', offset: 50, callback: function(el) {
+      $('.materialboxed').materialbox();
+    } }
+  ];
+  Materialize.scrollFire(options);
 
 
     $scope.$on('LastRepeaterElement', function(){
-      $('.materialboxed').materialbox();
+      console.log("emitted");
+
     });
 
-    this.prev = function() {
-      $('.carousel').carousel('prev');
-      toggleButtons();
-    }
-
-    this.next = function() {
-      $('.carousel').carousel('next');
-      toggleButtons();
-    }
-
-    function toggleButtons() {
-      $('#icon_prev').addClass('disabled');
-      $('#icon_prev').prop('disabled', true);
-      $('#icon_next').addClass('disabled');
-      $('#icon_next').prop('disabled', true);
-      setTimeout(function() {
-        $('#icon_prev').removeClass('disabled');
-        $('#icon_prev').prop('disabled', false);
-        $('#icon_next').removeClass('disabled');
-        $('#icon_next').prop('disabled', false);
-      }, 1300);
-    }
 
     this.helpers({
       project() {
         return Projects.findOne({
           project_id: $stateParams.projId
         });
+      },
+      projects() {
+        return Projects.find({});
       }
     });
   }

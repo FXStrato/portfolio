@@ -1,16 +1,18 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
+
 import { Projects } from '../../../api/projects';
 
 import template from './landing.html';
 
 class Landing {
-  constructor($scope, $reactive) {
+  constructor($scope, $reactive, $anchorScroll) {
     'ngInject';
 
     $reactive(this).attach($scope);
 
+    $anchorScroll();
 
     this.helpers({
       projects() {
