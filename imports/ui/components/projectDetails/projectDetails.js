@@ -26,8 +26,6 @@ class ProjectDetails {
 
 
     $scope.$on('LastRepeaterElement', function(){
-      console.log("emitted");
-
     });
 
 

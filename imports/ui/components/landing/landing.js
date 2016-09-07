@@ -16,7 +16,7 @@ class Landing {
 
     this.helpers({
       projects() {
-        return Projects.find({});
+        return Projects.find({}, {sort: {index: 1}});
       }
     });
   }

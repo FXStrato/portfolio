@@ -4,6 +4,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './navigation.html';
+import { Projects } from '../../../api/projects';
 
 class Navigation {
   constructor($scope, $reactive, $location) {
@@ -11,11 +12,19 @@ class Navigation {
 
     $reactive(this).attach($scope);
 
+
     $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
 
     $(".button-collapse").sideNav({closeOnClick: true});
+    $('.collapsible').collapsible();
+
+    this.helpers({
+      projects() {
+        return Projects.find({}, {sort: {index: 1}});
+      }
+    });
   }
 }
 

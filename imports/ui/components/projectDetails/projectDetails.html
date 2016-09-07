@@ -50,7 +50,7 @@
       <hr>
     </div>
   </div>
-  <div ng-repeat="picture in projectDetails.project.pictures" emit-last-repeater-element ng-if='$index % 2 == 0' class="row">
+  <div ng-repeat="picture in projectDetails.project.pictures" ng-if='$index % 2 == 0' class="row">
     <div class="col s12 m6 l6">
         <img class="responsive-img materialboxed" data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index] : ''}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
     </div>

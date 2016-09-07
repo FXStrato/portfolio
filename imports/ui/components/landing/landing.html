@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <ul id="hexGrid">
-  <li class="hex animated fadeIn" id='{{ project.project_id }}' ng-repeat="project in landing.projects">
+  <li class="hex animated fadeIn" id='{{ project.project_id }}' ng-repeat="project in landing.projects | orderBy : landing.projects.index">
     <a class="hexIn" ui-sref="projectDetails({ projId: project.project_id })">
       <img src="/images/{{project.project_id}}/{{project.project_id}}_landing.png" alt="" />
       <h1>{{project.name}}</h1>
