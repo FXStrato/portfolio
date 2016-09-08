@@ -3,7 +3,6 @@
 //2. Note that the collection needs to be imported first
 
 import { Meteor } from 'meteor/meteor';
-import { Parties } from '../api/parties';
 import { Projects } from '../api/projects';
 
 Meteor.startup(() => {
@@ -12,6 +11,7 @@ Meteor.startup(() => {
       'index': 1,
       'project_id': 'wga_2016',
       'name': 'WGA Umbrella Site Design 2016',
+      'shortname': 'WGA 2016',
       'description': "Creation of Washington Gaming Association's umbrella site",
       'code': 'Meteor, MEAN Stack, MaterializeCSS',
       'role': 'Full Stack Developer',
@@ -21,6 +21,7 @@ Meteor.startup(() => {
       'index': 2,
       'project_id': 'att_icc_2016',
       'name': 'AT&T Intern Coding Challenge 2016',
+      'shortname': 'AT&T ICC 2016',
       'description': "Team of 4 redesigned the Heroes On The Water organization's website",
       'code': 'MEAN Stack (MongoDB, Express, AngularJS, Node.js) and Bootstrap',
       'role': 'Project Manager, Full Stack Developer',
@@ -30,6 +31,7 @@ Meteor.startup(() => {
       'index': 3,
       'project_id': 'info_463',
       'name': 'INFO 463 Final Project 2016',
+      'shortname': 'INFO 463 2016',
       'description': 'Worked in a team of 4 to design an efficient and accurate smartwatch interface',
       'code': 'HTML/CSS with Javascript libraries',
       'role': 'Graphic Designer and Web Developer',
@@ -39,6 +41,7 @@ Meteor.startup(() => {
       'index': 4,
       'project_id': 'att_internship_2015',
       'name': 'AT&T Internship 2015',
+      'shortname': 'AT&T 2015',
       'description': 'Redesigned the OTSM dashboard for client team working with Jasper',
       'code': 'Adobe Coldfusion, HTML, Javascript, and Bootstrap',
       'role': 'UI/UX and Front-End Web Developer',
@@ -49,6 +52,7 @@ Meteor.startup(() => {
       'index': 5,
       'project_id': 'att_icc_2015',
       'name': 'AT&T Intern Coding Challenge 2015',
+      'shortname': 'AT&T ICC 2015',
       'description': 'Worked in a team of 6 to create a food buddy app',
       'code': 'Node.js, AngularJS, Parse Database, Google and Yelp API',
       'role': 'Front-End Web Developer',
@@ -58,6 +62,7 @@ Meteor.startup(() => {
       'index': 6,
       'project_id': 'dubhacks_2015',
       'name': 'Dubhacks 2015',
+      'shortname': 'Dubhacks 2015',
       'description': 'Team of 2 created an encrypted messaging app built with Socket.io',
       'code': 'MEAN Stack, Socket.io, Bootstrap CSS',
       'role': 'Developer',

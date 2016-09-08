@@ -14,7 +14,7 @@ body {
   height: 80px;
 }
 
-#projectDetails-title {
+.header-title {
   font-size: 3.1em;
 }
 
@@ -23,7 +23,7 @@ body {
 }
 
 @media only screen and (max-width : 992px) {
-  #projectDetails-title {
+  .header-title {
     font-size: 2.5em;
   }
   #additional-images {
@@ -33,7 +33,7 @@ body {
 }
 
 @media only screen and (max-width : 600px) {
-  #projectDetails-title {
+  .header-title {
     font-size: 1.5em;
   }
   #additional-images {

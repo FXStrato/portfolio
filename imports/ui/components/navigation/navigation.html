@@ -11,10 +11,7 @@
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
       <li><a href="/web">Videos</a></li>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Projects<i class="material-icons right">arrow_drop_down</i></a></li>
-      <ul id='dropdown1' class='dropdown-content'>
-        <li ng-repeat="project in navigation.projects"><a ui-sref="projectDetails({ projId: project.project_id })">{{project.name}}</a></li>
-      </ul>
+      <li class="truncate" style="margin-right: 10px" ng-repeat="project in navigation.projects" id="{{project.project_id}}"><a ui-sref="projectDetails({ projId: project.project_id })">{{project.shortname}}</a></li>
     </ul>
   </div>
 </nav>

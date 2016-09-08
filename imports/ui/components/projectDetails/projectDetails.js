@@ -13,8 +13,6 @@ class ProjectDetails {
 
     $anchorScroll(); // Start at top of page to allow for offset scrollfire to occur
 
-
-
     this.projId = $stateParams.projId;
 
     var options = [

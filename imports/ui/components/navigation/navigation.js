@@ -18,7 +18,10 @@ class Navigation {
     };
 
     $(".button-collapse").sideNav({closeOnClick: true});
-    $('.collapsible').collapsible();
+
+
+    $scope.$on('LastRepeaterElement', function(){
+    });
 
     this.helpers({
       projects() {

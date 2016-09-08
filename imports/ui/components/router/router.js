@@ -10,6 +10,7 @@ import { name as Navigation } from '../navigation/navigation';
 import { name as Contact } from '../contact/contact';
 import { name as About } from '../about/about';
 import { name as Web } from '../web/web';
+import { name as Graphics } from '../graphics/graphics';
 import {name as ProjectDetails } from '../projectDetails/projectDetails';
 import { name as Landing } from '../landing/landing'; //Example of import
 
@@ -31,6 +32,7 @@ export default angular.module(name, [
   Navigation,
   Contact,
   Web,
+  Graphics,
   About,
   ProjectDetails,
   Landing //Example of adding module to module list
