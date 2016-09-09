@@ -11,20 +11,13 @@ class ProjectDetails {
 
     $reactive(this).attach($scope);
 
-    $anchorScroll(); // Start at top of page to allow for offset scrollfire to occur
+    $anchorScroll(); 
 
     this.projId = $stateParams.projId;
 
-    var options = [
-    {selector: '#macbook-row', offset: 50, callback: function(el) {
-      $('.materialboxed').materialbox();
-    } }
-  ];
-  Materialize.scrollFire(options);
-
-
-    $scope.$on('LastRepeaterElement', function(){
-    });
+    // $scope.$on('LastRepeaterElement', function(){
+    //   $('.materialboxed').materialbox();
+    // });
 
 
     this.helpers({

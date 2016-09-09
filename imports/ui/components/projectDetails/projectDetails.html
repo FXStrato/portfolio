@@ -51,11 +51,10 @@
   </div>
   <div ng-repeat="picture in projectDetails.project.pictures" ng-if='$index % 2 == 0' class="row">
     <div class="col s12 m6 l6">
-        <img class="responsive-img materialboxed" data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index] : ''}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
+        <img class="responsive-img materialboxed" mbox data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index] : ' '}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index]}}.png">
     </div>
     <div class="col s12 m6 l6" ng-if="projectDetails.project.pictures.length > ($index + 1)">
-        <img class="responsive-img materialboxed" data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index+1] : ''}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index+1]}}.png">
+        <img class="responsive-img materialboxed" mbox data-caption="{{projectDetails.project.captions ? projectDetails.project.captions[$index+1] : ' '}}" src="/images/{{projectDetails.projId}}/{{projectDetails.project.pictures[$index+1]}}.png">
     </div>
   </div>
 </div>
-  <!-- <button class="btn waves-effect white black-text"><a href="/">Back</a></button> -->
