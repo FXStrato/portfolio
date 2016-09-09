@@ -11,14 +11,9 @@ class ProjectDetails {
 
     $reactive(this).attach($scope);
 
-    $anchorScroll(); 
+    $anchorScroll();
 
     this.projId = $stateParams.projId;
-
-    // $scope.$on('LastRepeaterElement', function(){
-    //   $('.materialboxed').materialbox();
-    // });
-
 
     this.helpers({
       project() {
