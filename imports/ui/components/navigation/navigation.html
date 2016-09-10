@@ -11,7 +11,7 @@
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
       <li><a href="/web">Videos</a></li>
-      <li class="truncate" style="margin-right: 10px" ng-repeat="project in navigation.projects" id="{{project.project_id}}"><a ui-sref="projectDetails({ projId: project.project_id })">{{project.shortname}}</a></li>
+      <li class="truncate" style="margin-right: 10px" ng-repeat="project in navigation.projects" id="{{project.project_id}}"><a ui-sref="projectDetails({ projId: project.project_id, index: project.index})">{{project.shortname}}</a></li>
     </ul>
   </div>
 </nav>
