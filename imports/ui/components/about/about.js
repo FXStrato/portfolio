@@ -7,8 +7,9 @@ import uiRouter from 'angular-ui-router';
 import template from './about.html';
 
 class About {
-  constructor($scope, $reactive) {
+  constructor($scope, $reactive, $location) {
   'ngInject';
+
 
   $reactive(this).attach($scope);
 

@@ -8,7 +8,7 @@ import { Projects } from '../api/projects';
 Meteor.startup(() => {
   // if (Projects.find().count() === 0) {
     const projs = [{
-      'index': 1,
+      'index': 0,
       'project_id': 'wga_2016',
       'name': 'WGA Umbrella Site Design 2016',
       'shortname': 'WGA 2016',
@@ -18,7 +18,7 @@ Meteor.startup(() => {
       'long_description': "This is a current project for WGA (Washington Gaming Association). The site being developed will serve as an umbrella site for all the eSports clubs within the University of Washington. It is both desktop and mobile responsive, and will be online by the end of this year.",
       'pictures': ['wga_2016_1', 'wga_2016_2']
     }, {
-      'index': 2,
+      'index': 1,
       'project_id': 'att_icc_2016',
       'name': 'AT&T Intern Coding Challenge 2016',
       'shortname': 'AT&T ICC 2016',
@@ -28,7 +28,7 @@ Meteor.startup(() => {
       'long_description': "This project was part of AT&T's internship program. We were asked to redesign the Heroes On The Water orgnization's site. The top three intern teams across the nation chosen by the judges would receive a cash prize. Given four weeks time compared to the other teams who had seven weeks, we created a functional, developed, and scalable site. For our efforts, we placed 3rd overall from a pool of 12 teams and received Best Video and Most Innovative accolades.",
       'pictures': ['att_icc_2016_1', 'att_icc_2016_2', 'att_icc_2016_3', 'att_icc_2016_4', 'att_icc_2016_5', 'att_icc_2016_6', 'att_icc_2016_7', 'att_icc_2016_8', 'att_icc_2016_9']
     }, {
-      'index': 3,
+      'index': 2,
       'project_id': 'info_463',
       'name': 'INFO 463 Final Project 2016',
       'shortname': 'INFO 463 2016',
@@ -38,7 +38,7 @@ Meteor.startup(() => {
       'long_description': "INFO 463 is a course at the University of Washington that focuses on user experience and interaction. Our final project was to design a smartwatch interface that was intuitive, efficient, accurate, and quick. As the team's developer, I built the page for users to test on, and also assisted in providing graphical wireframes for initial prototyping ideas. Our final design produced 17 WPM, whereas our class average was 14 WPM with their designs.",
       'github': "https://github.com/FXStrato/GG3-Final"
     }, {
-      'index': 4,
+      'index': 3,
       'project_id': 'att_internship_2015',
       'name': 'AT&T Internship 2015',
       'shortname': 'AT&T 2015',
@@ -49,7 +49,7 @@ Meteor.startup(() => {
       'pictures': ['att_internship_2015_1', 'att_internship_2015_2', 'att_internship_2015_3', 'att_internship_2015_4', 'att_internship_2015_5', 'att_internship_2015_6', 'att_internship_2015_7', 'att_internship_2015_8'],
       'captions': ['Redesigned capacity page', 'Old capacity page', 'Redesigned Activity File History page', 'Old Activity File History Page', 'Redesigned Invoice File History Page', 'Old Invoice History Page', 'Redesigned Invoice History Page', 'Old Invoice History Page']
     }, {
-      'index': 5,
+      'index': 4,
       'project_id': 'att_icc_2015',
       'name': 'AT&T Intern Coding Challenge 2015',
       'shortname': 'AT&T ICC 2015',
@@ -59,7 +59,7 @@ Meteor.startup(() => {
       'long_description': "Our intern team of 6 was tasked with creating a food buddy app to allow coworkers to easily find time and friends to go to lunch with. We designed our web app with a focus on mobile usage and created user profiles, event creation and details, polling, comments, events list separated by attending and invited, public vs. private events, and much more. We competed against the other summer interns across the nation. All the other interns had 7 weeks to complete their apps, while our team only had 4 weeks to submit a working application. Our app placed 1st in Best Overall from a pool of 16 intern teams.",
       'pictures': ['att_icc_2015_1', 'att_icc_2015_2', 'att_icc_2015_3', 'att_icc_2015_4', 'att_icc_2015_5', 'att_icc_2015_6', 'att_icc_2015_7', 'att_icc_2015_8', 'att_icc_2015_9', 'att_icc_2015_10']
     }, {
-      'index': 6,
+      'index': 5,
       'project_id': 'dubhacks_2015',
       'name': 'Dubhacks 2015',
       'shortname': 'Dubhacks 2015',

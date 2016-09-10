@@ -11,7 +11,24 @@ class ProjectDetails {
 
     $reactive(this).attach($scope);
 
+    const coreindexes = [2,9,0,8,10,3];
+
     $anchorScroll();
+
+    let id = $stateParams.projId;
+    let index = $stateParams.index;
+    let result = [];
+
+    for(var i = 1; i <= coreindexes[index]; i++) {
+      result.push({image: '/images/' + id + '/' + id + '_' + i + '.png'});
+    }
+    Galleria.loadTheme('/thirdparty/galleria.classic.min.js');
+    Galleria.run('.galleria', {
+      responsive : true,
+      height: 1,
+      dataSource: result,
+      lightbox: true
+    });
 
     this.projId = $stateParams.projId;
 
@@ -20,9 +37,6 @@ class ProjectDetails {
         return Projects.findOne({
           project_id: $stateParams.projId
         });
-      },
-      projects() {
-        return Projects.find({});
       }
     });
   }
@@ -46,7 +60,7 @@ function config($stateProvider) {
   'ngInject';
 
   $stateProvider.state('projectDetails', {
-    url: '/project/:projId',
+    url: '/project/:projId/:index',
     template: '<project-details></project-details>'
   });
 }
