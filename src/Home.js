@@ -25,6 +25,8 @@ class Home extends Component {
             <Link to="/projects"><Button type="secondary">All Projects</Button></Link>
             <Divider type="vertical"/>
             <Link to="/s">URL Shortener</Link>
+            <Divider type="vertical"/>
+            <Link to="/projects/namegen">Project Name Generator</Link>
           </Col>
         </Row>
       </div>

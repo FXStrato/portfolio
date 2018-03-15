@@ -6,6 +6,7 @@ import Img from 'react-image';
 import Lazy from 'react-lazy-load';
 import CoPlayBanner from './img/coplay_banner.png';
 import ShortenerBanner from './img/shortener_banner.png';
+import NamegenBanner from './img/namegen_banner.png';
 const Panel = Collapse.Panel;
 
 
@@ -25,7 +26,7 @@ class Projects extends Component {
                 <Row gutter={16} style={{paddingLeft: 24}}>
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
-                      <ProgressiveImage preview={CoPlayBanner} src={CoPlayBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={CoPlayBanner} alt="CoPlay Room Example"/>}/>
+                      <ProgressiveImage preview={CoPlayBanner} src={CoPlayBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="CoPlay Room Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
@@ -53,7 +54,7 @@ class Projects extends Component {
                 <Row gutter={16} style={{paddingLeft: 24}}>
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
-                      <ProgressiveImage preview={ShortenerBanner} src={ShortenerBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={ShortenerBanner} alt="URL Shortener Example"/>}/>
+                      <ProgressiveImage preview={ShortenerBanner} src={ShortenerBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="URL Shortener Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
@@ -73,6 +74,31 @@ class Projects extends Component {
                     </ul>
                     <h3>Ambition</h3>
                     <p>A URL shortener has always been an interesting tool that I wanted to create. I decided to give it a shot, and develop one to learn about how it worked.I imported the md5 encryption, but developed a Base62 encoding to use.</p>
+                  </Col>
+                </Row>
+              </Panel>
+              <Panel header="Project Name Generator" key={3}>
+                <Row gutter={16} style={{paddingLeft: 24}}>
+                  <Col md={24} lg={12} style={{marginBottom: 15}}>
+                    <Lazy>
+                      <ProgressiveImage preview={NamegenBanner} src={NamegenBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Project Name Generator Example"/>}/>
+                    </Lazy>
+                  </Col>
+                  <Col md={24} lg={12}>
+                    <div className="center-align">
+                      <Link to="/projects/namegen"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
+                    </div>
+                    <h3>About</h3>
+                    <p>A simple project name generator.</p>
+                    <h3>Technologies Used</h3>
+                    <p>React, AntD</p>
+                    <h3>Features</h3>
+                    <ul>
+                      <li>Generate a project name using a json file of nouns.</li>
+                      <li>Names are randomly generated from a list of 4500+ nouns.</li>
+                    </ul>
+                    <h3>Ambition</h3>
+                    <p>In the past, I've struggled to come up with fancy sounding names for my projects. Now, with naming conventions like those of Github and Heroku, they've become much easier. I also wanted to try and come up with a simple and quick manner to name a project, and here we are.</p>
                   </Col>
                 </Row>
               </Panel>

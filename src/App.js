@@ -29,6 +29,11 @@ const Shortener = Loadable({
     import('./Shortener'),
   loading: Loading
 })
+const NameGen = Loadable({
+  loader: () =>
+    import('./NameGen'),
+  loading: Loading
+})
 const NotFound = Loadable({
   loader: () =>
     import('./NotFound'),
@@ -140,6 +145,7 @@ class App extends Component {
               <Route exact={true} path="/" render={(props) => <Home {...props}/>}/>
               <Route exact={true} path="/projects" component={Projects}/>
               <Route exact={true} path="/s" component={Shortener}/>
+              <Route exact={true} path="/projects/namegen" component={NameGen}/>
               <Route exact={true} path="/s/:code" component={Shortener}/>
               <Route component={NotFound}/>
             </Switch>
