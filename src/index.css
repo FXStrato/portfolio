@@ -1,20 +1,21 @@
 /*******************
-
-  Color Classes
-
+  Color CSS
 *******************/
 
 .error-text {
   color: #f5222d;
 }
+
 /*******************
-
   Utility Classes
-
 *******************/
 
 .hide {
   display: none !important;
+}
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .left-align {
@@ -25,8 +26,7 @@
   text-align: right;
 }
 
-.center,
-.center-align {
+.center, .center-align {
   text-align: center;
 }
 
@@ -66,177 +66,219 @@
   align-items: center;
 }
 
-img.responsive-img,
-video.responsive-video {
+img.responsive-img, video.responsive-video {
   max-width: 100%;
   height: auto;
 }
+
+.hoverable {
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+}
+
+.hoverable:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 /*********************
-
   Media Query Classes
-
 **********************/
+
 @media only screen and (max-width: 576px) {
-  .hide-on-small-and-down,
-  .hide-on-small-only {
+  .hide-on-small-only, .hide-on-small-and-down {
     display: none !important;
   }
 }
+
 @media only screen and (max-width: 768px) {
   .hide-on-med-and-down {
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 577px) {
   .hide-on-med-and-up {
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 576px) and (max-width: 768px) {
   .hide-on-med-only {
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 769px) {
   .hide-on-large-only {
     display: none !important;
   }
 }
+
 @media only screen and (min-width: 769px) {
   .show-on-large {
     display: block !important;
   }
 }
+
 @media only screen and (min-width: 576px) and (max-width: 768px) {
-  .show-on-medium {
+  .show-on-med {
     display: block !important;
   }
 }
+
 @media only screen and (max-width: 576px) {
   .show-on-small {
     display: block !important;
   }
 }
+
 @media only screen and (min-width: 577px) {
-  .show-on-medium-and-up {
+  .show-on-med-and-up {
     display: block !important;
   }
 }
+
 @media only screen and (max-width: 768px) {
-  .show-on-medium-and-down {
+  .show-on-med-and-down {
     display: block !important;
   }
 }
+
 @media only screen and (max-width: 576px) {
   .center-on-small-only {
     text-align: center;
   }
 }
+
 @media only screen and (min-width: 360px) {
   .flow-text {
     font-size: 1.2rem;
   }
 }
+
 @media only screen and (min-width: 390px) {
   .flow-text {
     font-size: 1.224rem;
   }
 }
+
 @media only screen and (min-width: 420px) {
   .flow-text {
     font-size: 1.248rem;
   }
 }
+
 @media only screen and (min-width: 450px) {
   .flow-text {
     font-size: 1.272rem;
   }
 }
+
 @media only screen and (min-width: 480px) {
   .flow-text {
     font-size: 1.296rem;
   }
 }
+
 @media only screen and (min-width: 510px) {
   .flow-text {
     font-size: 1.32rem;
   }
 }
+
 @media only screen and (min-width: 540px) {
   .flow-text {
     font-size: 1.344rem;
   }
 }
+
 @media only screen and (min-width: 570px) {
   .flow-text {
     font-size: 1.368rem;
   }
 }
+
 @media only screen and (min-width: 600px) {
   .flow-text {
     font-size: 1.392rem;
   }
 }
+
 @media only screen and (min-width: 630px) {
   .flow-text {
     font-size: 1.416rem;
   }
 }
+
 @media only screen and (min-width: 660px) {
   .flow-text {
     font-size: 1.44rem;
   }
 }
+
 @media only screen and (min-width: 690px) {
   .flow-text {
     font-size: 1.464rem;
   }
 }
+
 @media only screen and (min-width: 720px) {
   .flow-text {
     font-size: 1.488rem;
   }
 }
+
 @media only screen and (min-width: 750px) {
   .flow-text {
     font-size: 1.512rem;
   }
 }
+
 @media only screen and (min-width: 780px) {
   .flow-text {
     font-size: 1.536rem;
   }
 }
+
 @media only screen and (min-width: 810px) {
   .flow-text {
     font-size: 1.56rem;
   }
 }
+
 @media only screen and (min-width: 840px) {
   .flow-text {
     font-size: 1.584rem;
   }
 }
+
 @media only screen and (min-width: 870px) {
   .flow-text {
     font-size: 1.608rem;
   }
 }
+
 @media only screen and (min-width: 900px) {
   .flow-text {
     font-size: 1.632rem;
   }
 }
+
 @media only screen and (min-width: 930px) {
   .flow-text {
     font-size: 1.656rem;
   }
 }
+
 @media only screen and (min-width: 960px) {
   .flow-text {
     font-size: 1.68rem;
   }
 }
+
 @media only screen and (max-width: 360px) {
   .flow-text {
     font-size: 1.2rem;
