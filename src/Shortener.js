@@ -30,7 +30,7 @@ class Shortener extends Component {
       let code = this.props.match.params.code;
       this.db.collection('urls').doc(code).get().then(snap => {
         if(snap.exists) {
-          window.location.href = snap.data().longurl;
+          window.location.assign(snap.data().longurl);
         } else {
           this.props.history.push({pathname: '/s', state: {path: code}});
         }
@@ -62,6 +62,8 @@ class Shortener extends Component {
       });
     }
 
+    //If value does not contain http, need to add that in (default http)
+    if(!value.includes("http://www.")) value = "http://www." + value;
     let sRef = this.db.collection('urls');
     this.setState({ loading: true });
     //Don't really need to check for existing hash, if 15 days is max TTL. If same hash is generated, refresh TTL
