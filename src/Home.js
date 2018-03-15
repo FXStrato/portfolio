@@ -16,7 +16,7 @@ class Home extends Component {
               <ProgressiveImage preview={Me} src={Me} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Jeff Zhong"/>}/>
             </Lazy>
           </Col>
-          <Col md={24} lg={10}>
+          <Col md={24} lg={10} style={{marginTop: 20}}>
             <h2>About Me</h2>
             <p style={{fontSize: '0.9rem'}}>Hello and welcome. My name is Jeff Zhong, and I am a Front End/User Experience (UX) Developer and Engineer. I graduated from the University of Washington - Seattle in 2017, and currently work for AT&T (July 2017-Present). I enjoy creating and developing side projects to explore different technologies and bring to life my own interests, ideas, and style.</p>
             <p style={{fontSize: '0.9rem'}}>The technologies I have interest in at the moment include <a href="https://reactjs.org/" rel="noopener noreferrer" target="_blank">React</a>, <a href="https://angular.io/" rel="noopener noreferrer" target="_blank">Angular</a>, <a href="https://firebase.google.com/" rel="noopener noreferrer" target="_blank">Firebase</a>, and <a href="https://ant.design/" rel="noopener noreferrer" target="_blank">AntD</a>.</p>
