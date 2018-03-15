@@ -62,8 +62,9 @@ class Shortener extends Component {
       });
     }
 
+    value = value.toLowerCase();
     //If value does not contain http, need to add that in (default http)
-    if(!value.includes("http://www.")) value = "http://www." + value;
+    if(!value.includes("http://www.") || !value.includes("https://www.")) value = "http://www." + value;
     let sRef = this.db.collection('urls');
     this.setState({ loading: true });
     //Don't really need to check for existing hash, if 15 days is max TTL. If same hash is generated, refresh TTL
@@ -125,7 +126,7 @@ class Shortener extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    if(e) e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         //If custom exists, check if custom is already in firestore, if not use that.
@@ -166,7 +167,7 @@ class Shortener extends Component {
                 <Button type="secondary" style={{marginBottom: 10}} onClick={() => this.setState({showCustom: !this.state.showCustom})}>{this.state.showCustom ? 'Hide Custom URL': 'Use Custom URL'}</Button>
                 {getFieldDecorator('input', {
                   rules: [{}, {validator: this.handleInput}]
-                })(<Search placeholder="Input URL" onPressEnter={this.handleSubmit} disabled={this.state.loading} enterButton="Shorten URL" size="large" />)}
+                })(<Search placeholder="Input URL" onPressEnter={this.handleSubmit} onSearch={value => this.handleSubmit(null)} disabled={this.state.loading} enterButton="Shorten URL" size="large" />)}
               </FormItem>
               {this.state.showCustom &&
               <FormItem className="animated fadeIn" validateStatus={this.state.customError.status} help={this.state.customError.msg}>
