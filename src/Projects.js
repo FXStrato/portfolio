@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Collapse, Icon, Button, Spin } from 'antd';
+import { Row, Col, Collapse, Icon, Button } from 'antd';
+import ProgressiveImage from 'react-progressive-image-loading';
 import Img from 'react-image';
 import Lazy from 'react-lazy-load';
 import CoPlayBanner from './img/coplay_banner.png';
@@ -24,7 +25,7 @@ class Projects extends Component {
                 <Row gutter={16} style={{paddingLeft: 24}}>
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
-                      <Img className="responsive-img shadow" src={CoPlayBanner} alt="CoPlay Room Example" loader={<Spin size="small" />}/>
+                      <ProgressiveImage preview={CoPlayBanner} src={CoPlayBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={CoPlayBanner} alt="CoPlay Room Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
@@ -52,7 +53,7 @@ class Projects extends Component {
                 <Row gutter={16} style={{paddingLeft: 24}}>
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
-                      <Img className="responsive-img shadow" src={ShortenerBanner} alt="URL Shortener Example" loader={<Spin size="small" />}/>
+                      <ProgressiveImage preview={ShortenerBanner} src={ShortenerBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={ShortenerBanner} alt="URL Shortener Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>

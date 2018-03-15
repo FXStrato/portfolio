@@ -1,9 +1,14 @@
 /*******************
-  Color CSS
+  Created CSS
 *******************/
 
 .error-text {
   color: #f5222d;
+}
+
+.spaced {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }
 
 /*******************

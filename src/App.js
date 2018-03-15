@@ -8,7 +8,7 @@ import {
   Layout,
   Menu,
   Dropdown,
-  Icon
+  Icon,
 } from 'antd';
 import Loadable from 'react-loadable';
 import Loading from './Loading';
@@ -56,32 +56,31 @@ class App extends Component {
   highlightMenu = () => {
     switch (this.props.location.pathname) {
     case '/':
-      return ['1'];
+      return '1';
     case '/projects':
-      return ['2'];
-    case '/other':
-      return ['3'];
+      return '2';
+    case '/s':
+      return '2';
     default:
-      return [];
+      return '';
     }
   }
 
   render() {
-    let cPath = this.props.location.pathname;
     let defaultMenuKey = this.highlightMenu();
-    const dropdownMenu = (<Menu selectedKeys={defaultMenuKey}>
-      <Menu.Divider/>
+    const dropdownMenu = (<Menu selectedKeys={[defaultMenuKey]}>
       <Menu.Item key="1">
-        <Link style={{marginTop: 5, marginBottom: 5, width: 150}} to="/" replace={"/" === cPath}>Home</Link>
+        <Link to="/">Home</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link style={{marginTop: 5, marginBottom: 5}} to="projects" replace={"/projects" === cPath}>Projects</Link>
+        <Link to="/projects">Projects</Link>
       </Menu.Item>
+      <Menu.Divider />
       <Menu.Item key="3">
-        <a style={{marginTop: 5, marginBottom: 5}} href="https://www.linkedin.com/in/jeff-zhong-1a3036125/" rel="noopener noreferrer" target="_blank"><Icon type="linkedin" style={{marginRight: 5}}/>LinkedIn</a>
+        <a href="https://www.linkedin.com/in/jeff-zhong-1a3036125/" rel="noopener noreferrer" target="_blank"><Icon type="linkedin" style={{marginRight: 5}}/>LinkedIn</a>
       </Menu.Item>
       <Menu.Item key="4">
-        <a style={{marginTop: 5, marginBottom: 5}} href="https://github.com/FXStrato" rel="noopener noreferrer" target="_blank"><Icon type="github" style={{marginRight: 5}}/>Github</a>
+        <a href="https://github.com/FXStrato" rel="noopener noreferrer" target="_blank"><Icon type="github" style={{marginRight: 5}}/>Github</a>
       </Menu.Item>
     </Menu>);
     return (
@@ -95,20 +94,20 @@ class App extends Component {
                   marginRight: 20,
                   marginLeft: -10
                 }}>
-                <Link to="/" replace={"/" === cPath}><img className="responsive-img" style={{
+                <Link to="/"><img className="responsive-img" style={{
                 maxHeight: 48,
                 marginTop: -5
               }} src={Logo} alt="Portfolio Logo"/></Link>
               </div>
-              <Menu mode="horizontal" className="hide-on-med-and-down" selectedKeys={defaultMenuKey} style={{
+              <Menu mode="horizontal" className="hide-on-med-and-down" selectedKeys={[defaultMenuKey]} style={{
                   lineHeight: '62px',
                   borderBottom: 'none',
                 }}>
                 <Menu.Item key="1">
-                  <Link to="/" replace={"/" === cPath}>Home</Link>
+                  <Link to="/">Home</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <Link to="projects" replace={"/projects" === cPath}>Projects</Link>
+                  <Link to="/projects">Projects</Link>
                 </Menu.Item>
                 <Menu.Item key="3">
                   <a href="https://www.linkedin.com/in/jeff-zhong-1a3036125/" rel="noopener noreferrer" target="_blank"><Icon type="linkedin"/>LinkedIn</a>

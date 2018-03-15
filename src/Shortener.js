@@ -22,6 +22,7 @@ class Shortener extends Component {
     loading: false,
     showCustom: false,
     customError: {},
+    total: null
   }
 
   componentWillMount = () => {
@@ -36,6 +37,9 @@ class Shortener extends Component {
         }
       })
     }
+    this.db.collection('urls').get().then(snap => {
+      this.setState({total: this.numberWithCommas(snap.size)})
+    })
   }
 
   //Function to encode url, uses md5 hash before converting to base62, takes 8 char substring
@@ -148,6 +152,10 @@ class Shortener extends Component {
     })
   }
 
+  numberWithCommas = (x) => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   render() {
     let path;
     if(this.props.location.state) {
@@ -204,6 +212,7 @@ class Shortener extends Component {
             </Col>
           </Row>
         </Spin>
+        {this.state.total && <p className="animated fadeIn center-align" style={{fontSize: '0.9rem'}}>URLs shortened: {this.state.total}</p>}
       </div>
     )
   }
