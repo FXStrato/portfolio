@@ -75,17 +75,17 @@ class App extends Component {
     let defaultMenuKey = this.highlightMenu();
     const dropdownMenu = (<Menu selectedKeys={[defaultMenuKey]}>
       <Menu.Item key="1">
-        <Link to="/">Home</Link>
+        <Link to="/" className="spaced">Home</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/projects">Projects</Link>
+        <Link to="/projects" className="spaced">Projects</Link>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="3">
-        <a href="https://www.linkedin.com/in/jeff-zhong-1a3036125/" rel="noopener noreferrer" target="_blank"><Icon type="linkedin" style={{marginRight: 5}}/>LinkedIn</a>
+        <a className="spaced" href="https://www.linkedin.com/in/jeff-zhong-1a3036125/" rel="noopener noreferrer" target="_blank"><Icon type="linkedin" style={{marginRight: 5}}/>LinkedIn</a>
       </Menu.Item>
       <Menu.Item key="4">
-        <a href="https://github.com/FXStrato" rel="noopener noreferrer" target="_blank"><Icon type="github" style={{marginRight: 5}}/>Github</a>
+        <a className="spaced" href="https://github.com/FXStrato" rel="noopener noreferrer" target="_blank"><Icon type="github" style={{marginRight: 5}}/>Github</a>
       </Menu.Item>
     </Menu>);
     return (
