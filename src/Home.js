@@ -27,6 +27,8 @@ class Home extends Component {
             <Link to="/s">URL Shortener</Link>
             <Divider type="vertical"/>
             <Link to="/projects/namegen">Project Name Generator</Link>
+            <Divider type="vertical"/>
+            <Link to="/projects/owrank">Overwatch Rank Checker</Link>
           </Col>
         </Row>
       </div>

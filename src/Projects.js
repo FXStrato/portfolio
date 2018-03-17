@@ -102,6 +102,30 @@ class Projects extends Component {
                   </Col>
                 </Row>
               </Panel>
+              <Panel header="Overwatch Rank Checker" key={4}>
+                <Row gutter={16} style={{paddingLeft: 24}}>
+                  <Col md={24} lg={12} style={{marginBottom: 15}}>
+                    {/* <Lazy>
+                      <ProgressiveImage preview={NamegenBanner} src={NamegenBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Project Name Generator Example"/>}/>
+                    </Lazy> */}
+                  </Col>
+                  <Col md={24} lg={12}>
+                    <div className="center-align">
+                      <Link to="/projects/owrank"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
+                    </div>
+                    <h3>About</h3>
+                    <p>Check a person's rank and most played heroes for the current competitive season in the game Overwatch.</p>
+                    <h3>Technologies Used</h3>
+                    <p>React, AntD</p>
+                    <h3>Features</h3>
+                    <ul>
+
+                    </ul>
+                    <h3>Ambition</h3>
+                    <p></p>
+                  </Col>
+                </Row>
+              </Panel>
             </Collapse>
           </Col>
         </Row>
