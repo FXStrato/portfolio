@@ -12,7 +12,7 @@ class Home extends Component {
       <div>
         <Row type="flex" justify="center" gutter={16}>
           <Col md={24} lg={6}>
-            <Lazy width={220} className="right">
+            <Lazy width={220} style={{marginRight: 'auto', marginLeft: 'auto'}}>
               <ProgressiveImage preview={Me} src={Me} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Jeff Zhong"/>}/>
             </Lazy>
           </Col>
