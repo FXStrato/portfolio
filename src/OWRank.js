@@ -42,7 +42,7 @@ class OWRank extends Component {
       "pharah": "#218fef",
       "lucio": "#88db64",
       "moira": "#662a31"
-    }
+    },
   }
 
   async getData(id) {
@@ -101,7 +101,8 @@ class OWRank extends Component {
   }
 
   capitalize = val => {
-    return val.charAt(0).toUpperCase() + val.substring(1);
+    if (val) return val.charAt(0).toUpperCase() + val.substring(1);
+    else return "";
   }
 
   getTime = val => {
@@ -109,6 +110,57 @@ class OWRank extends Component {
     else if (val >= 1 && val < 60) return Math.floor(val) + ' MINS';
     else if (val < 1 && val > 0) return 'UNDER A MIN';
     else return val + ' MIN';
+  }
+
+  getLevel = (stars, level) => {
+    let remainder = stars % 6;
+    let starNum = [];
+    for (let i = 0; i < remainder; i++) {
+      starNum.push(<Icon key={`star-${i}`} type="star"/>);
+    }
+
+    let bg = {
+      backgroundColor: '#000',
+      color: '#fff',
+      borderRadius: '3px',
+      padding: starNum.length > 0 ? "4px 4px 4px 10px" : "4px 10px 4px 10px"
+    }
+
+    let starbg = {
+      backgroundColor: '#fff',
+      color: '#000',
+      marginLeft: 5,
+      borderRadius: '3px'
+    }
+
+    if (stars <= 5) {
+      //Bronze
+      bg.backgroundColor = '#b86a58';
+      starbg.color = '#b86a58';
+    } else if (stars <= 11) {
+      //Silver
+      bg.backgroundColor = '#afbcc0';
+      bg.color = '#1e1e1e';
+      starbg.color = '#1e1e1e';
+    } else if (stars <= 17) {
+      //Gold
+      bg.backgroundColor = '#f2ca5c';
+      bg.color = '#a07708';
+      starbg.color = '#a07708';
+    } else if (stars <= 23) {
+      //Platinum
+      bg.border = 'solid 3px #f7d251';
+      bg.backgroundColor = '#ccd3d4';
+      bg.color = '#1e1e1e';
+      starbg.color = '#f7d251';
+    } else {
+
+    }
+
+    return <span style={bg}>{level}
+    {starNum.length > 0 && <span style={starbg}>{starNum}</span>}
+    </span>
+
   }
 
   render() {
@@ -130,7 +182,7 @@ class OWRank extends Component {
       <Row>
         <Col md={24} lg={{span: 12, offset: 6}}>
           <h2>Overwatch Rank Checker</h2>
-          <p style={{fontSize: '0.95rem'}}>Search up a US player's competitive stats for the current season of Overwatch. Write the input as [Battlenet Name]-[Battlenet ID]</p>
+          <p style={{fontSize: '0.95rem'}}>Search up a U.S. player's competitive stats for the current season of Overwatch. Write the input as [Battlenet Name]-[Battlenet ID]</p>
           <p>NOTE: The search is case sensitive!</p>
           <Spin spinning={this.state.loading}>
             <Form>
@@ -142,7 +194,7 @@ class OWRank extends Component {
         </Col>
       </Row>
       {this.state.showData &&
-      <div>
+      <Spin spinning={this.state.loading}>
         <Row style={{marginTop: 30}} type="flex" justify="center" gutter={16}>
           <Col md={24} lg={4} style={{marginBottom: 30}}>
             <Card loading={this.state.loading} className="full-width">
@@ -154,8 +206,9 @@ class OWRank extends Component {
                   </Tooltip>
                 </Col>
                 <Col md={24} lg={12} className="center-align">
+                  <h3>{this.state.id.replace('-', '#')}</h3>
                   <p><Avatar size="large" shape="square" src={rank.avatar}/></p>
-                  <p>Level: {rank.prestige}<Icon type="star"/> | {rank.level}</p>
+                  <p>{this.getLevel(rank.prestige, rank.level)}</p>
                   <p>Wins: {rank.wins}</p>
                   <p>Total Games: {rank.games}</p>
                   <p>Win Rate: {rank.win_rate}%</p>
@@ -182,7 +235,7 @@ class OWRank extends Component {
             </ResponsiveContainer>
           </Col>
         </Row>
-      </div>
+      </Spin>
       }
       {this.state.noComp &&
         <Row style={{marginTop: 30}} type="flex" justify="center" align="middle">
