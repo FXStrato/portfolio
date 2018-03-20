@@ -7,6 +7,7 @@ import Lazy from 'react-lazy-load';
 import CoPlayBanner from './img/coplay_banner.png';
 import ShortenerBanner from './img/shortener_banner.png';
 import NamegenBanner from './img/namegen_banner.png';
+import OwrankBanner from './img/owrank_banner.png';
 const Panel = Collapse.Panel;
 
 
@@ -23,7 +24,7 @@ class Projects extends Component {
           <Col sm={24}>
             <Collapse bordered={true} accordion={true}>
               <Panel header="CoPlay" key={1}>
-                <Row gutter={16} style={{paddingLeft: 24}}>
+                <Row gutter={16} style={{paddingLeft: 24}} type="flex" justify="center" align="middle">
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
                       <ProgressiveImage preview={CoPlayBanner} src={CoPlayBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="CoPlay Room Example"/>}/>
@@ -105,9 +106,9 @@ class Projects extends Component {
               <Panel header="Overwatch Rank Checker" key={4}>
                 <Row gutter={16} style={{paddingLeft: 24}}>
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
-                    {/* <Lazy>
-                      <ProgressiveImage preview={NamegenBanner} src={NamegenBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Project Name Generator Example"/>}/>
-                    </Lazy> */}
+                    <Lazy>
+                      <ProgressiveImage preview={OwrankBanner} src={OwrankBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Overwatch Rank Checker Example"/>}/>
+                    </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
                     <div className="center-align">
@@ -116,13 +117,15 @@ class Projects extends Component {
                     <h3>About</h3>
                     <p>Check a person's rank and most played heroes for the current competitive season in the game Overwatch.</p>
                     <h3>Technologies Used</h3>
-                    <p>React, AntD</p>
+                    <p>React, AntD, <a href="https://github.com/Fuyukai/OWAPI" target="_blank" rel="noopener noreferrer">OWAPI</a>, <a href="http://recharts.org/#/en-US/" target="_blank" rel="noopener noreferrer">Recharts</a></p>
                     <h3>Features</h3>
                     <ul>
-
+                      <li>Utilizes an overwatch API (OWAPI) to acquire data.</li>
+                      <li>Displays current season's rank, games won, total games played, win ratio, avatar, and competitive time played for each hero.</li>
+                      <li></li>
                     </ul>
                     <h3>Ambition</h3>
-                    <p></p>
+                    <p>I wanted to be able to view my friends' ranked information without having to go online ingame to check. I wanted to make my own small, unique checker so that I can look up the information I need quickly and without the necessity of being ingame to do so.</p>
                   </Col>
                 </Row>
               </Panel>

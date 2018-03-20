@@ -105,9 +105,9 @@ class OWRank extends Component {
   }
 
   getTime = val => {
-    if ((val / 60) >= 1) return Math.floor(val / 60) + (Math.floor(val/60) > 1 ? ' HRS' : ' HR');
-    else if(val >= 1 && val < 60) return Math.floor(val) + ' MINS';
-    else if(val < 1 && val > 0) return 'UNDER A MIN';
+    if ((val / 60) >= 1) return Math.floor(val / 60) + (Math.floor(val / 60) > 1 ? ' HRS' : ' HR');
+    else if (val >= 1 && val < 60) return Math.floor(val) + ' MINS';
+    else if (val < 1 && val > 0) return 'UNDER A MIN';
     else return val + ' MIN';
   }
 
@@ -129,13 +129,13 @@ class OWRank extends Component {
     return (<div>
       <Row>
         <Col md={24} lg={{span: 12, offset: 6}}>
-          <h2>OWRank</h2>
+          <h2>Overwatch Rank Checker</h2>
           <p style={{fontSize: '0.95rem'}}>Search up a US player's competitive stats for the current season of Overwatch. Write the input as [Battlenet Name]-[Battlenet ID]</p>
           <p>NOTE: The search is case sensitive!</p>
           <Spin spinning={this.state.loading}>
             <Form>
               <FormItem validateStatus={this.state.error.status} help={this.state.error.msg}>
-                <Search placeholder="ex. Neonine-1943" onSearch={this.checkSearch} onChange={val => this.setState({error: {}})} enterButton="Check Rank" size="large" />
+                <Search placeholder="ex. Neonine-1943" onSearch={this.checkSearch} disabled={this.state.loading} onChange={val => this.setState({error: {}})} enterButton="Check Rank" size="large" />
               </FormItem>
             </Form>
           </Spin>
@@ -163,7 +163,7 @@ class OWRank extends Component {
               </Row>
             </Card>
           </Col>
-          <Col sm={24} md={24} lg={12}>
+          <Col sm={24} md={24} lg={12} className="full-width">
             <ResponsiveContainer height={700}>
               <BarChart layout="vertical" data={heroes} barCategoryGap={0}>
                 <Bar dataKey="minutes" stackId="a">
