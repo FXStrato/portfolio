@@ -41,7 +41,8 @@ class OWRank extends Component {
       "mei": "#58a2e2",
       "pharah": "#218fef",
       "lucio": "#88db64",
-      "moira": "#662a31"
+      "moira": "#662a31",
+      "brigitte": "#f96234"
     },
   }
 
@@ -222,7 +223,7 @@ class OWRank extends Component {
                 <Bar dataKey="minutes" stackId="a">
                   {
                     heroes.map((e, index) => {
-                      return <Cell key={`cell-${index}`} fill={this.state.colors[e.name.toLowerCase()]}/>
+                      return <Cell key={`cell-${index}`} fill={this.state.colors[e.name.toLowerCase()] || "#000"}/>
                     })
                   }
                 </Bar>

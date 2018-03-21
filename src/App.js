@@ -49,18 +49,21 @@ class App extends Component {
 
   componentWillMount = () => {
     //Run an async check on all urls, remove ones that are 15+ days old
-    let db = firebase.firestore();
-    let sRef = db.collection('urls');
-    let current = moment();
-    sRef.get().then(snap => {
-      snap.forEach(doc => {
-        if(current.diff(moment(doc.data().entry), 'days') > 15) {
-          sRef.doc(doc.id).delete();
-        }
+    //Only run check if not redirecting
+    if(!this.props.location.pathname.includes('/s/')) {
+      let db = firebase.firestore();
+      let sRef = db.collection('urls');
+      let current = moment();
+      sRef.get().then(snap => {
+        snap.forEach(doc => {
+          if(current.diff(moment(doc.data().entry), 'days') > 15) {
+            sRef.doc(doc.id).delete();
+          }
+        })
+      }).catch(err => {
+        console.log('Error obtaining urls list', err);
       })
-    }).catch(err => {
-      console.log('Error obtaining urls list', err);
-    })
+    }
   }
 
   highlightMenu = () => {
