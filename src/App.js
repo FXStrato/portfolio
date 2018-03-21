@@ -39,6 +39,11 @@ const OWRank = Loadable({
     import('./OWRank'),
   loading: Loading
 })
+const Food = Loadable({
+  loader: () =>
+    import('./Food'),
+  loading: Loading
+})
 const NotFound = Loadable({
   loader: () =>
     import('./NotFound'),
@@ -155,6 +160,7 @@ class App extends Component {
               <Route exact={true} path="/s" component={Shortener}/>
               <Route exact={true} path="/projects/namegen" component={NameGen}/>
               <Route exact={true} path="/projects/owrank" component={OWRank}/>
+              <Route exact={true} path="/projects/food" component={Food}/>
               <Route exact={true} path="/s/:code" component={Shortener}/>
               <Route component={NotFound}/>
             </Switch>
