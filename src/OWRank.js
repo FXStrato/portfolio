@@ -197,7 +197,7 @@ class OWRank extends Component {
       {this.state.showData &&
       <Spin spinning={this.state.loading}>
         <Row style={{marginTop: 30}} type="flex" justify="center" gutter={16}>
-          <Col md={24} lg={4} style={{marginBottom: 30}}>
+          <Col md={24} lg={6} style={{marginBottom: 30}}>
             <Card loading={this.state.loading} className="full-width">
               <Row gutter={16} type="flex" justify="center" align="middle">
                 <Col md={24} lg={12} className="center-align" style={{marginRight: 'auto', marginLeft: 'auto'}}>

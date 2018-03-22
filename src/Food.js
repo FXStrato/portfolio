@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Progress, Button, Icon, Select, Form, message, Card, Tag } from 'antd';
+import { Row, Col, Progress, Button, Icon, Select, Form, message, Card, Tag, Input } from 'antd';
 import ProgressiveImage from 'react-progressive-image-loading';
 import Img from 'react-image';
 const FormItem = Form.Item;
@@ -26,7 +26,7 @@ class Food extends Component {
     //If unable to set, browser does not support geolocation or was denied
     this.setState({ showPercent: true });
     if (navigator.geolocation) {
-      this.setState({ search: { radius: 1600, price: '1,2,3', term: 'food' } });
+      this.setState({ search: { radius: 1600, price: '1,2,3', term: 'food', radiusSelect: 'Walking', priceSelect: 'All' } });
       navigator.geolocation.getCurrentPosition(el => {
         this.setState({ latlong: { lat: el.coords.latitude, long: el.coords.longitude }, percent: 50 });
         this.getLocation(el.coords);
@@ -75,7 +75,7 @@ class Food extends Component {
           message.error(res.error.description);
           this.setState({ loading: false });
         } else {
-          message.error('No food places found (try modifying settings)');
+          message.error('No places found (try modifying settings)');
           this.setState({ loading: false });
         }
       }).catch(err => {
@@ -89,17 +89,33 @@ class Food extends Component {
     }
   }
 
+  handleSearch = () => {
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        //No form errors, get food place
+        this.getFood();
+      } else {
+        if(!this.state.showAdvanced) this.setState({showAdvanced: true});
+      }
+    });
+  }
+
   handleQuery = (param, val) => {
     let temp = this.state.search;
-    if (param === 'radius') temp[param] = val === 'Walking' ? 1600 : 16100;
+    if (param === 'radius') {
+      temp.radiusSelect = val;
+      if(val === 'Walking') temp[param] = 1600;
+      else if(val === 'Transit') temp[param] = 5000;
+      else temp[param] = 16100;
+    }
     else if (param === 'price') {
+      temp.priceSelect = val;
       if (val === 'All') temp[param] = '1,2,3';
       else temp[param] = val.length;
     }
     else {
       temp[param] = val;
     }
-
     this.setState({ search: temp });
   }
 
@@ -116,17 +132,21 @@ class Food extends Component {
       },
     };
 
+    const { getFieldDecorator } = this.props.form;
+
     if (this.state.data) {
       tags = [];
       //Randomly select one from available list
       data = this.state.data.businesses[Math.floor(Math.random() * this.state.data.businesses.length)];
-      console.log(data);
       data.miles = (data.distance / 1609.34).toFixed(1);
       data.address = data.location.display_address[0] + ', ' + data.location.display_address[1];
       data.categories.forEach(el => {
         tags.push(<Tag key={`tag-${el.alias}`}>{el.alias}</Tag>)
       })
-      directions_url = "https://www.google.com/maps/dir/?api=1&origin=" + this.state.location.replace(/ /g, '+') + '&destination=' + data.address.replace(/ /g, '+') + '&travelmode=' + (this.state.search.radius === 1600 ? 'transit' : 'driving');
+      directions_url = "https://www.google.com/maps/dir/?api=1&origin=" + this.state.location.replace(/ /g, '+') + '&destination=' + data.address.replace(/ /g, '+') + '&travelmode=';
+      if(this.state.search.radius === 1600) directions_url += 'walking';
+      else if(this.state.search.radius === 5000) directions_url += 'transit';
+      else directions_url += 'driving';
     }
 
     return (<div>
@@ -145,37 +165,43 @@ class Food extends Component {
             {this.state.latlong ?
             <div>
               <p>Need a place to go for food but can't decide where? <br/> Press the button below. No backsies now.</p>
-              <Button disabled={this.state.loading} onClick={() => this.getFood()}
+              <Button disabled={this.state.loading} onClick={this.handleSearch}
                 style={{width: 100, height: 100, marginBottom: 20}} type="primary" shape="circle" size="large">{this.state.loading ? <Icon type="loading" style={{fontSize: 40}}/> : <Icon type="environment" style={{fontSize: 40}}/>}</Button>
-              <p>Current Location: <br/>{this.state.location}</p>
+              <p>Current Location: <br/>{this.state.location}* <br/> <small>* If the location is not where you currently are, it is most likely due to a proxy or rerouting service that is returning a different address than where you are currently at.</small></p>
               {!this.state.loading && <p><a onClick={() => this.setState({showAdvanced: !this.state.showAdvanced})}>Advanced Settings {this.state.showAdvanced ? <Icon type="up"/> : <Icon type="down"/>}</a></p>}
             </div>
             :
-            <p>Unable to obtain geolocation, please allow for the site to use your location to use the application.</p>
+            <div>
+              <p>Unable to obtain geolocation. Please enable geolocation to use this app.Thanks!</p>
+            </div>
             }
           </Col>
           {this.state.showAdvanced &&
           <Col sm={24}>
             <Form style={{marginTop: 10}}>
-              <FormItem label="Mode of Transportation" {...formItemLayout}>
-                <Select defaultValue="Walking/Transit" style={{ width: 120 }} onChange={(val) => this.handleQuery('radius', val)}>
-                  <Option value="Walking">Walking/Transit</Option>
-                  <Option value="Driving">Driving</Option>
-                </Select>
+              <FormItem label="Search Term" {...formItemLayout}>
+                {getFieldDecorator('term', {
+                  rules: [{required: true, message: 'Please input a search term'}], initialValue: this.state.search.term
+                })(<Input style={{width: 200}} placeholder="What are you looking for?" onChange={(val) => this.handleQuery('term', val)}/>)}
               </FormItem>
-              <FormItem label="Type" {...formItemLayout}>
-                <Select defaultValue="Food" style={{ width: 120 }} onChange={(val) => this.handleQuery('term', val)}>
-                  <Option value="Food">Food</Option>
-                  <Option value="Drinks">Drinks</Option>
-                </Select>
+              <FormItem label="Mode of Transportation" {...formItemLayout}>
+                {getFieldDecorator('transport', {
+                  rules: [{}], initialValue: this.state.search.radiusSelect
+                })(<Select style={{ width: 120 }} onChange={(val) => this.handleQuery('radius', val)}>
+                  <Option value="Walking">Walking</Option>
+                  <Option value="Transit">Transit</Option>
+                  <Option value="Driving">Driving</Option>
+                </Select>)}
               </FormItem>
               <FormItem label="Price Range" {...formItemLayout}>
-                <Select defaultValue="All" style={{ width: 120 }} onChange={(val) => this.handleQuery('price', val)}>
+                {getFieldDecorator('price', {
+                  rules: [{}], initialValue: this.state.search.priceSelect
+                })(<Select style={{ width: 120 }} onChange={(val) => this.handleQuery('price', val)}>
                   <Option value="$">$</Option>
                   <Option value="$$">$$</Option>
                   <Option value="$$$">$$$</Option>
                   <Option value="All">All</Option>
-                </Select>
+                </Select>)}
               </FormItem>
             </Form>
           </Col>
@@ -199,6 +225,7 @@ class Food extends Component {
               <p><a href={`tel:${data.phone}`}>{data.display_phone}</a></p>
               <div>{tags}</div>
             </Card>
+            <Button style={{marginTop: 20}} type="secondary" onClick={() =>this.setState({data: null})}>Only press this if someone is going to die if they go here</Button>
           </Col>
         </Row>
         }

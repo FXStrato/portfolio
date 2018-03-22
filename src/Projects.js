@@ -8,6 +8,7 @@ import CoPlayBanner from './img/coplay_banner.png';
 import ShortenerBanner from './img/shortener_banner.png';
 import NamegenBanner from './img/namegen_banner.png';
 import OwrankBanner from './img/owrank_banner.png';
+import FoodBanner from './img/food_banner.png';
 const Panel = Collapse.Panel;
 
 
@@ -31,7 +32,7 @@ class Projects extends Component {
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
-                    <div className="center-align">
+                    <div className="center">
                       <a href="https://coplay-840e6.firebaseapp.com/" target="_blank" rel="noopener noreferrer"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></a>
                       <a href="https://github.com/FXStrato/coplay" target="_blank" rel="noopener noreferrer"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}><Icon type="github"/></Button></a>
                     </div>
@@ -52,14 +53,14 @@ class Projects extends Component {
                 </Row>
               </Panel>
               <Panel header="URL Shortener" key={2}>
-                <Row gutter={16} style={{paddingLeft: 24}}>
+                <Row gutter={16} style={{paddingLeft: 24}} type="flex" justify="center" align="middle">
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
                       <ProgressiveImage preview={ShortenerBanner} src={ShortenerBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="URL Shortener Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
-                    <div className="center-align">
+                    <div className="center">
                       <Link to="/s"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
                     </div>
                     <h3>About</h3>
@@ -79,14 +80,14 @@ class Projects extends Component {
                 </Row>
               </Panel>
               <Panel header="Project Name Generator" key={3}>
-                <Row gutter={16} style={{paddingLeft: 24}}>
+                <Row gutter={16} style={{paddingLeft: 24}} type="flex" justify="center" align="middle">
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
                       <ProgressiveImage preview={NamegenBanner} src={NamegenBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Project Name Generator Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
-                    <div className="center-align">
+                    <div className="center">
                       <Link to="/projects/namegen"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
                     </div>
                     <h3>About</h3>
@@ -104,14 +105,14 @@ class Projects extends Component {
                 </Row>
               </Panel>
               <Panel header="Overwatch Rank Checker" key={4}>
-                <Row gutter={16} style={{paddingLeft: 24}}>
+                <Row gutter={16} style={{paddingLeft: 24}} type="flex" justify="center" align="middle">
                   <Col md={24} lg={12} style={{marginBottom: 15}}>
                     <Lazy>
                       <ProgressiveImage preview={OwrankBanner} src={OwrankBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Overwatch Rank Checker Example"/>}/>
                     </Lazy>
                   </Col>
                   <Col md={24} lg={12}>
-                    <div className="center-align">
+                    <div className="center">
                       <Link to="/projects/owrank"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
                     </div>
                     <h3>About</h3>
@@ -122,10 +123,36 @@ class Projects extends Component {
                     <ul>
                       <li>Utilizes an overwatch API (OWAPI) to acquire data.</li>
                       <li>Displays current season's rank, games won, total games played, win ratio, avatar, and competitive time played for each hero.</li>
-                      <li></li>
                     </ul>
                     <h3>Ambition</h3>
-                    <p>I wanted to be able to view my friends' ranked information without having to go online ingame to check. I wanted to make my own small, unique checker so that I can look up the information I need quickly and without the necessity of being ingame to do so.</p>
+                    <p>I wanted to be able to view my friends' ranked information without having to go ingame to check. So I created a simple checker that will display their competitive rank and hero times without having to jump online.</p>
+                  </Col>
+                </Row>
+              </Panel>
+              <Panel header="Place To Eat" key={5}>
+                <Row gutter={16} style={{paddingLeft: 24}} type="flex" justify="center" align="middle">
+                  <Col md={24} lg={12} style={{marginBottom: 15}}>
+                    <Lazy>
+                      <ProgressiveImage preview={FoodBanner} src={FoodBanner} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Place To Eat Example"/>}/>
+                    </Lazy>
+                  </Col>
+                  <Col md={24} lg={12}>
+                    <div className="center-align">
+                      <Link to="/projects/food"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
+                    </div>
+                    <h3>About</h3>
+                    <p>Search up a place to go for food; by only receiving one option.</p>
+                    <h3>Technologies Used</h3>
+                    <p>React, AntD, Google Javascript API, Google Geocode API, Yelp Fusion API</p>
+                    <h3>Features</h3>
+                    <ul>
+                      <li>Utilizes Google Geocode to obtain current location</li>
+                      <li>Queries Yelp for businesses</li>
+                      <li>Randomly displays one best matched food place to go</li>
+                      <li>Editable settings for distance willing to travel, search term, and price range.</li>
+                    </ul>
+                    <h3>Ambition</h3>
+                    <p>Too many times the question is asked "where do you want to go for food?" So I came up with a simple solution; an app that will only give you one option.</p>
                   </Col>
                 </Row>
               </Panel>

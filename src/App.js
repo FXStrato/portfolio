@@ -60,11 +60,14 @@ class App extends Component {
       let sRef = db.collection('urls');
       let current = moment();
       sRef.get().then(snap => {
-        snap.forEach(doc => {
-          if(current.diff(moment(doc.data().entry), 'days') > 15) {
-            sRef.doc(doc.id).delete();
-          }
-        })
+        //Only pruning if over 100 urls are in the firestore
+        if(snap.size > 100) {
+          snap.forEach(doc => {
+            if(current.diff(moment(doc.data().entry), 'days') > 15) {
+              sRef.doc(doc.id).delete();
+            }
+          })
+        }
       }).catch(err => {
         console.log('Error obtaining urls list', err);
       })
