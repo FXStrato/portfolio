@@ -31,7 +31,7 @@ class Food extends Component {
         this.setState({ latlong: { lat: el.coords.latitude, long: el.coords.longitude }, percent: 50 });
         this.getLocation(el.coords);
       }, err => {
-        this.setState({ showPercent: false });
+        this.setState({ showPercent: false});
         console.log(err);
       })
     }
@@ -41,23 +41,25 @@ class Food extends Component {
     try {
       const response = await fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + el.latitude + "," + el.longitude + "&key=" + this.state.geoCodeKey);
       await response.json().then(res => {
-        if (res.results.length > 0) {
+        console.log(res);
+        if (!res.error_message) {
           this.setState({ location: res.results[0].formatted_address, percent: 100 });
           setTimeout(() => {
             this.setState({ showPercent: false });
           }, 500);
-        } else this.setState({ showPercent: false });
+        } else this.setState({ showPercent: false, latlong: null });
       }).catch(err => {
-        this.setState({ showPercent: false });
+        this.setState({ showPercent: false, latlong: null });
         console.log(err);
       });
     } catch (err) {
-      this.setState({ showPercent: false });
+      this.setState({ showPercent: false, latlong: null });
       message.error('Unable to fetch data from Google Maps');
     }
   }
 
   async getFood() {
+    //For local development use this in font of the https:// (https://cors-anywhere.herokuapp.com/)
     try {
       this.setState({ loading: true });
       let url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search";
@@ -172,7 +174,7 @@ class Food extends Component {
             </div>
             :
             <div>
-              <p>Unable to obtain geolocation. Please enable geolocation to use this app.Thanks!</p>
+              <p>Unable to obtain geolocation. If geolocation was disabled, please enable geolocation to use this app.Thanks!</p>
             </div>
             }
           </Col>
