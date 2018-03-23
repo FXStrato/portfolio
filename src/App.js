@@ -55,15 +55,15 @@ class App extends Component {
   componentWillMount = () => {
     //Run an async check on all urls, remove ones that are 15+ days old
     //Only run check if not redirecting
-    if(!this.props.location.pathname.includes('/s/')) {
+    if (!this.props.location.pathname.includes('/s/')) {
       let db = firebase.firestore();
       let sRef = db.collection('urls');
       let current = moment();
       sRef.get().then(snap => {
         //Only pruning if over 100 urls are in the firestore
-        if(snap.size > 100) {
+        if (snap.size > 100) {
           snap.forEach(doc => {
-            if(current.diff(moment(doc.data().entry), 'days') > 15) {
+            if (current.diff(moment(doc.data().entry), 'days') > 15) {
               sRef.doc(doc.id).delete();
             }
           })

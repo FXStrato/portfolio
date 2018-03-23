@@ -11,7 +11,6 @@ import OwrankBanner from './img/owrank_banner.png';
 import FoodBanner from './img/food_banner.png';
 const Panel = Collapse.Panel;
 
-
 class Projects extends Component {
   render() {
     return (
