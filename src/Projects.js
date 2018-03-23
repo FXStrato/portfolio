@@ -137,7 +137,7 @@ class Projects extends Component {
                   </Col>
                   <Col md={24} lg={12}>
                     <div className="center-align">
-                      <a href="https://jeffzhong.surge.sh/projects/food" rel="noopener noreferrer"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></a>
+                      <Link to="/projects/food"><Button type="secondary" style={{marginBottom: 5, marginRight: 5}}>Check It Out</Button></Link>
                     </div>
                     <h3>About</h3>
                     <p>Search up a place to go for food; by only receiving one option.</p>

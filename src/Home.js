@@ -30,7 +30,7 @@ class Home extends Component {
             <Divider type="vertical"/>
             <Link to="/projects/owrank">Overwatch Rank Checker</Link>
             <Divider type="vertical"/>
-            <a href="https://jeffzhong.surge.sh/projects/food" rel="noopener noreferrer" target="_blank">Place To Eat</a>
+            <Link to="/projects/food">Place to Eat</Link>
           </Col>
         </Row>
       </div>
