@@ -9,6 +9,7 @@ import {
   Menu,
   Dropdown,
   Icon,
+  Breadcrumb,
 } from 'antd';
 import Loadable from 'react-loadable';
 import Loading from './Loading';
@@ -16,37 +17,37 @@ import Logo from './img/logo.png';
 const { Header, Content, Footer } = Layout;
 const Home = Loadable({
   loader: () =>
-    import('./Home'),
+    import ('./Home'),
   loading: Loading
 })
 const Projects = Loadable({
   loader: () =>
-    import('./Projects'),
+    import ('./Projects'),
   loading: Loading
 })
 const Shortener = Loadable({
   loader: () =>
-    import('./Shortener'),
+    import ('./Shortener'),
   loading: Loading
 })
 const NameGen = Loadable({
   loader: () =>
-    import('./NameGen'),
+    import ('./NameGen'),
   loading: Loading
 })
 const OWRank = Loadable({
   loader: () =>
-    import('./OWRank'),
+    import ('./OWRank'),
   loading: Loading
 })
 const Food = Loadable({
   loader: () =>
-    import('./Food'),
+    import ('./Food'),
   loading: Loading
 })
 const NotFound = Loadable({
   loader: () =>
-    import('./NotFound'),
+    import ('./NotFound'),
   loading: Loading
 })
 
@@ -80,14 +81,19 @@ class App extends Component {
       return '1';
     case '/projects':
       return '2';
-    case '/s':
-      return '2';
     default:
       return '';
     }
   }
 
   render() {
+    let loc = this.props.location.pathname;
+    let appname;
+    if(loc.includes('/s')) appname = 'URL Shortener';
+    else if(loc.includes('/namegen')) appname = "Project Name Generator";
+    else if(loc.includes('/owrank')) appname = "Overwatch Rank Checker";
+    else if(loc.includes('/food')) appname = "Place to Eat";
+
     let defaultMenuKey = this.highlightMenu();
     const dropdownMenu = (<Menu selectedKeys={[defaultMenuKey]}>
       <Menu.Item key="1">
@@ -157,6 +163,16 @@ class App extends Component {
             background: '#fff',
             minHeight: 360
           }}>
+            {appname &&
+            <Row style={{marginTop: -40}} className="animated fadeIn">
+              <Col sm={24}>
+                <Breadcrumb>
+                  <Breadcrumb.Item><Link to="/projects">Projects</Link></Breadcrumb.Item>
+                  <Breadcrumb.Item>{appname}</Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+            </Row>
+            }
             <Switch>
               <Route exact={true} path="/" render={(props) => <Home {...props}/>}/>
               <Route exact={true} path="/projects" component={Projects}/>
