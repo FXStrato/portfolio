@@ -9,9 +9,9 @@ const { Meta } = Card;
 class Food extends Component {
 
   state = {
-    yelpKey: 's5fm8-v2z6wb9cor8eUDDvkYQFt1flZeoqbx1hVxu2onKgeC5dCbFpL9dvftLMgP9iNxAIoNxwiI5y4PL6C12E434wpRNw_tkAKpLgm0Huw9R-C10KUUmJa_FbKyWnYx',
-    embedKey: 'AIzaSyDWqtue67lekxFKRFzhgm-f1-4A7znrXOU',
-    geoCodeKey: 'AIzaSyCPVqrtGTlCrgFYcHLOI_bKxI225h6fkvk',
+    yelpKey: process.env.REACT_APP_YELPKEY,
+    embedKey: process.env.REACT_APP_EMBEDKEY,
+    geoCodeKey: process.env.REACT_APP_GEOCODEKEY,
     latlong: null,
     location: null,
     loading: false,

@@ -4,17 +4,14 @@ import { Row, Col, Divider, Button } from 'antd';
 import Me from './img/me.png';
 import ProgressiveImage from 'react-progressive-image-loading';
 import Img from 'react-image';
-import Lazy from 'react-lazy-load';
 
 class Home extends Component {
   render() {
     return (
       <div>
         <Row type="flex" justify="center" gutter={16}>
-          <Col sm={24} md={8} lg={6} style={{marginBottom: 20}}>
-            <Lazy width={220} className="right">
-              <ProgressiveImage preview={Me} src={Me} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Jeff Zhong"/>}/>
-            </Lazy>
+          <Col sm={24} md={8} lg={6} style={{marginBottom: 20, maxWidth: 220}}>
+            <ProgressiveImage preview={Me} src={Me} render={(src, style) => <Img className="responsive-img shadow" style={style} src={src} alt="Jeff Zhong"/>}/>
           </Col>
           <Col sm={24} md={14} lg={10}>
             <h2>About Me</h2>

@@ -8,10 +8,11 @@ import './animate.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 require('firebase/firestore');
+require('dotenv').config();
 
 //Initialize Firebase/Firestore
 firebase.initializeApp({
-  apiKey: "AIzaSyCYFkvU2AeAXzBKdVJNkyGv6pxVC8MyrCo",
+  apiKey: process.env.REACT_APP_FIREBASEAPIKEY,
   authDomain: "portfolio-jeffzhong.firebaseapp.com",
   databaseURL: "https://portfolio-jeffzhong.firebaseio.com",
   projectId: "portfolio-jeffzhong",
