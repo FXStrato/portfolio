@@ -58,6 +58,8 @@ class App extends Component {
     //Only run check if not redirecting
     if (!this.props.location.pathname.includes('/s/')) {
       let db = firebase.firestore();
+      const settings = {timestampsInSnapshots: true};
+      db.settings(settings);
       let sRef = db.collection('urls');
       let current = moment();
       sRef.get().then(snap => {

@@ -36,13 +36,15 @@ class Shortener extends Component {
           this.props.history.push({pathname: '/s', state: {path: code}});
         }
       })
+    } else {
+      this.db.collection('urls').get().then(snap => {
+        this.setState({total: this.numberWithCommas(snap.size)})
+      })
     }
-    this.db.collection('urls').get().then(snap => {
-      this.setState({total: this.numberWithCommas(snap.size)})
-    })
   }
 
   //Function to encode url, uses md5 hash before converting to base62, takes 8 char substring
+  //If custom was given, submit custom to firebase
   encode = (value, custom) => {
     this.setState({ encoded: null });
     let hash = "";
@@ -65,19 +67,19 @@ class Shortener extends Component {
         hash += base[val];
       });
     }
-
-    value = value.toLowerCase();
-    //If value does not contain http, need to add that in (default http)
-    if(!value.includes("http://www.") || !value.includes("https://www.")) value = "http://www." + value;
+    value = value.replace('https://', 'http://');
     let sRef = this.db.collection('urls');
     this.setState({ loading: true });
-    //Don't really need to check for existing hash, if 15 days is max TTL. If same hash is generated, refresh TTL
+    //Don't really need to check for existing hash,. if same hash is generated, refresh TTL
     let name = custom || hash;
     sRef.doc(name).set({
       longurl: value,
       entry: moment().format(),
     }).then(() => {
-      this.setState({ loading: false, encoded: hash });
+      this.setState({ loading: false, encoded: name });
+      this.db.collection('urls').get().then(snap => {
+        this.setState({total: this.numberWithCommas(snap.size)})
+      })
     }).catch(err => {
       console.log('Error setting generated url', err);
     })
@@ -102,7 +104,7 @@ class Shortener extends Component {
   }
 
   handleCustom = (rule, value, callback) => {
-    let pattern = new RegExp('^[a-zA-Z0-9_]*$');
+    let pattern = new RegExp('^[a-zA-Z0-9_.:|-]*$');
     if (pattern.test(value)) {
       this.setState({ custom: value, customError: {} });
       callback();
@@ -146,7 +148,7 @@ class Shortener extends Component {
             console.log('Error checking if custom exists', err);
           })
         } else {
-          this.encode(values.input);
+          this.encode(values.input, null);
         }
       }
     })
@@ -167,7 +169,7 @@ class Shortener extends Component {
         {!this.props.match.params.code ?
         <Row>
           <Col md={24} lg={{span: 12, offset: 6}}>
-            {path && <p className="center-align">jeffzhong.me/s/{path} does not exist; bring it to life.</p>}
+            {path && <p className="center-align">jeffzhong.me/s/{path} does not exist</p>}
             <h2>URL Shortener</h2>
             <p style={{fontSize: '0.9rem'}}>Generate a shortened URL using Base62 encoding. Custom URLs are supported. Shortened URLs will last for 15 days.</p>
             <Form onSubmit={this.handleSubmit}>
@@ -179,7 +181,7 @@ class Shortener extends Component {
               </FormItem>
               {this.state.showCustom &&
               <FormItem className="animated fadeIn" validateStatus={this.state.customError.status} help={this.state.customError.msg}>
-                <p>Numbers and letters and underscores are supported. (ex. link3_status)</p>
+                <p>Numbers, letters, period, dashes, colons and underscores are supported. (ex. li.nk:3_stat-us)</p>
                 {getFieldDecorator('custom', {
                   rules: [{},{validator: this.handleCustom}]
                 })(<Input size="large" placeholder="Custom URL" onPressEnter={this.handleSubmit}/>)}
@@ -207,6 +209,7 @@ class Shortener extends Component {
                     <Button style={{width: '100%'}} size="large" type="secondary">jeffzhong.me/s/{this.state.encoded}</Button>
                   </Popover>
                 </CopyToClipboard>
+                <p className="center error-text">Please click to copy, and save it locally for future use!</p>
               </div>
               }
             </Col>
