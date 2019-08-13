@@ -6,18 +6,24 @@
   "author": "Jeff Zhong",
   "license": "MIT",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "yarn clean && parcel index.html",
     "build": "yarn clean && parcel build index.html --public-url ./",
     "clean": "yarn run rimraf dist && rimraf .cache"
   },
   "dependencies": {
-    "preact": "10.0.0-rc.1"
+    "preact": "10.0.0-rc.1",
+    "styled-components": "4.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/plugin-transform-react-jsx": "7.3.0",
     "babel-plugin-jsx-pragmatic": "1.0.2",
+    "babel-plugin-styled-components": "1.10.6",
     "parcel-bundler": "1.12.3",
     "rimraf": "2.6.3"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat"
   }
 }
