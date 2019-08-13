@@ -2,13 +2,18 @@ import styled from 'styled-components';
 
 // First section to greet user
 
+const Wrapper = styled.section`
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+`;
+
 const MainText = styled.h1`
-    font-size: 3rem;
-    text-align: center;
 `;
 
 export default () => (
-    <section>
+    <Wrapper>
         <MainText>Hi, I'm Jeff.</MainText>
-    </section>
+    </Wrapper>
 )

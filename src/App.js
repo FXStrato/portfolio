@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: rgb(24, 26, 27);
         color: rgb(214, 211, 205);
+        margin: 0;
     }
 `;
 
