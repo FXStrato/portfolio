@@ -14,6 +14,10 @@ const MainText = styled.h1`
 
 export default () => (
     <Wrapper>
-        <MainText>Hi, I'm Jeff. I'm a Front End Engineer.</MainText>
+        <MainText>Work Experience</MainText>
+        <ul>
+            <li>Payscale</li>
+            <li>AT&T</li>
+        </ul>
     </Wrapper>
 )

@@ -7,6 +7,3 @@
 ## Building
 1. Run ```yarn build```
 2. Output files will be in dist folder
-
-## Troubleshooting
-1. Run ```yarn clean``` to clear local cache and remove old builds

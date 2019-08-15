@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import Landing from './landing';
+import Work from './work';
 
+// Adding a global style to the whole site
 const GlobalStyle = createGlobalStyle`
     body {
         background-color: rgb(24, 26, 27);
@@ -14,5 +16,6 @@ export default () => (
     <main>
         <GlobalStyle/>
         <Landing/>
+        <Work/>
     </main>
 );
