@@ -13,9 +13,9 @@ const GlobalStyle = createGlobalStyle`
 
 // Main application wrapper
 export default () => (
-    <main>
-        <GlobalStyle/>
-        <Landing/>
-        <Work/>
-    </main>
+  <main>
+    <GlobalStyle />
+    <Landing />
+    <Work />
+  </main>
 );
