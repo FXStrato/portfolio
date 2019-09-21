@@ -11,7 +11,7 @@
     "clean": "yarn run rimraf dist && rimraf .cache"
   },
   "dependencies": {
-    "preact": "10.0.0-rc.1",
+    "preact": "10.0.0-rc.3",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
