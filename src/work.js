@@ -5,15 +5,13 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 46px);
   align-items: center;
 `;
 
-const MainText = styled.h1``;
-
 export default () => (
   <Wrapper>
-    <MainText>Work Experience</MainText>
+    <h1>Work Experience</h1>
     <ul>
       <li>Payscale</li>
       <li>AT&T</li>
