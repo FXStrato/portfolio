@@ -8,12 +8,8 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
-
-const Text = styled.h1`
-`
-
 export default () => (
   <Wrapper>
-    <Text>Hi, I'm Jeff. I'm a Front End Engineer.</Text>
+    <h1>Hi, I'm Jeff. I'm a Front End Engineer.</h1>
   </Wrapper>
 );

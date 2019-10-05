@@ -7,14 +7,17 @@ const Wrapper = styled.section`
   justify-content: center;
   height: calc(100vh - 46px);
   align-items: center;
+  flex-direction: column;
 `;
 
 export default () => (
   <Wrapper>
     <h1>Work Experience</h1>
-    <ul>
-      <li>Payscale</li>
-      <li>AT&T</li>
-    </ul>
+    <div>
+      <ul>
+        <li>Payscale</li>
+        <li>AT&T</li>
+      </ul>
+    </div>
   </Wrapper>
 );
